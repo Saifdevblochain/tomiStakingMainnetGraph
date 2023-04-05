@@ -1,0 +1,8 @@
+{
+  "mainnet": {
+    "tomiStaking": {
+      "address": "0x7bDE6Dbb58AF9CcC8b18010d0d847efA953eD2F5",
+      "startBlock": 16984593
+    }
+  }
+}

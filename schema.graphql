@@ -1,0 +1,72 @@
+type Initialized @entity(immutable: true) {
+  id: Bytes!
+  version: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type claimed @entity(immutable: true) {
+  id: Bytes!
+  claimedBy: Bytes! # address
+  indexClaimed: BigInt! # uint256
+  claimTime: BigInt! # uint256
+  claimRewardAmount: BigInt! # uint256
+  stakesInfo_startTime_: BigInt! # uint256
+  stakesInfo_endTime_: BigInt! # uint256
+  stakesInfo_stakeAmount: BigInt! # uint256
+  stakesInfo_stakeDuration: BigInt! # uint256
+  stakesInfo_stakeAPY: BigInt! # uint256
+  stakesInfo_lastClaimTime: BigInt! # uint256
+  stakesInfo_stakedForAPY: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type stakedAPY @entity(immutable: true) {
+  id: Bytes!
+  index: BigInt! # uint256
+  staker: Bytes! # address
+  amountStaked: BigInt! # uint256
+  stakeTime: BigInt! # uint256
+  lockPeriod: BigInt! # uint256
+  APY: BigInt! # uint256
+  stakesInfo_startTime_: BigInt! # uint256
+  stakesInfo_endTime_: BigInt! # uint256
+  stakesInfo_stakeAmount: BigInt! # uint256
+  stakesInfo_stakeDuration: BigInt! # uint256
+  stakesInfo_stakeAPY: BigInt! # uint256
+  stakesInfo_lastClaimTime: BigInt! # uint256
+  stakesInfo_stakedForAPY: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type unStakeAPY @entity(immutable: true) {
+  id: Bytes!
+  unStaker: Bytes! # address
+  unStakeTime: BigInt! # uint256
+  unStakeIndex: BigInt! # uint256
+  stakesInfo_startTime_: BigInt! # uint256
+  stakesInfo_endTime_: BigInt! # uint256
+  stakesInfo_stakeAmount: BigInt! # uint256
+  stakesInfo_stakeDuration: BigInt! # uint256
+  stakesInfo_stakeAPY: BigInt! # uint256
+  stakesInfo_lastClaimTime: BigInt! # uint256
+  stakesInfo_stakedForAPY: Boolean! # bool
+  _reward: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

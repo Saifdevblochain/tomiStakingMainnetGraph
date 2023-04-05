@@ -1,0 +1,36 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: tomiStaking
+    network: mainnet
+    source:
+      address: "0x7bDE6Dbb58AF9CcC8b18010d0d847efA953eD2F5"
+      abi: tomiStaking
+      startBlock: 16984593
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Initialized
+        - OwnershipTransferred
+        - claimed
+        - stakedAPY
+        - unStakeAPY
+      abis:
+        - name: tomiStaking
+          file: ./abis/tomiStaking.json
+      eventHandlers:
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: claimed(address,uint256,uint256,uint256,(uint256,uint256,uint256,uint256,uint256,uint256,bool))
+          handler: handleclaimed
+        - event: stakedAPY(uint256,address,uint256,uint256,uint256,uint256,(uint256,uint256,uint256,uint256,uint256,uint256,bool))
+          handler: handlestakedAPY
+        - event: unStakeAPY(address,uint256,uint256,(uint256,uint256,uint256,uint256,uint256,uint256,bool),uint256)
+          handler: handleunStakeAPY
+      file: ./src/tomi-staking.ts
