@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: tomiStaking
@@ -21,7 +21,7 @@ dataSources:
         - unStakeAPY
       abis:
         - name: tomiStaking
-          file: ./abis/tomiStaking.json
+          file: tomiStaking\abis\tomiStaking.json
       eventHandlers:
         - event: Initialized(uint8)
           handler: handleInitialized
@@ -33,4 +33,4 @@ dataSources:
           handler: handlestakedAPY
         - event: unStakeAPY(address,uint256,uint256,(uint256,uint256,uint256,uint256,uint256,uint256,bool),uint256)
           handler: handleunStakeAPY
-      file: ./src/tomi-staking.ts
+      file: tomiStaking\tomiStaking.wasm
